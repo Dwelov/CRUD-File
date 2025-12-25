@@ -4,10 +4,22 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <sstream>
 using namespace std;
 // Function to read the existing file
-void readFile(const string &filename);
-void addStudents(const string &filename, const string &rollNumber, const string &newName,
+     void readFile(const string &filename);
+
+               //function to add students in the file
+     void addStudents(const string &filename, const string &rollNumber, const string &newName,
                  const vector<int> &newMarks, float newAverage);
+
+                 //function to update the file
+     void updateRecord(const string &filename, const string &rollNumber, const string &newName,
+                  const vector<int> &newMarks, float newAverage);
+
+      //function to delete the file
+     void delete(){}
+
+
 
 #endif
