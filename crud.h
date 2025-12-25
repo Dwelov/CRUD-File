@@ -8,6 +8,7 @@ using namespace std;
 // Function to read the existing file
 void readFile(const string &filename);
 void addStudents(const string &filename, const string &rollNumber, const string &newName,
-                  const vector<int> &newMarks, double newAverage);
+                 const vector<int> &newMarks, double newAverage);
+void updateRecord(string &filename, string &rollNumber);
 
 #endif
