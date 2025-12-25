@@ -2,52 +2,36 @@
 
 bool validateRollNumber(const string &rollNumber)
 {
-    // as my roll no is the dataset file are in the format BSAI25011519-50
-    // Step # 1
+    // Step 1: Must be exactly 15 characters
     if (rollNumber.length() != 15)
-    {
         return false;
-    }
 
-    // step # 2-checking first 4 characters
+    // Step 2: First 4 characters must be "BSAI"
     if (rollNumber.substr(0, 4) != "BSAI")
-    {
         return false;
-    }
 
-    // step # 3-checking next 8 characters are digits or not
-    for (int i = 4; i < 12; i++)
-    {
+    // Step 3: Next 8 characters must be digits
+    for (int i = 4; i < 12; i++) {
         if (!isdigit(rollNumber[i]))
-        {
             return false;
-        }
     }
 
-    // step # 4 - checking if the 8 characters are equal to 25011519
-    for (int i = 4; i < 12; i++)
-    {
-        string result;
-        result += rollNumber[i];
-        if (stoi(result) != 25011519)
-        {
-            return false;
-        }
-    }
-    // step-5 - checking the 13th character is '-'
-    if (rollNumber[13] != '-')
-    {
+    // Step 4: Those 8 digits must equal "25011519"
+    if (rollNumber.substr(4, 8) != "25011519")
         return false;
-    }
 
-    // step # 6 - checking last two characters are digits or not
-    for (int i = 13; i <= 15; i++)
-    {
-        if (!isdigit(rollNumber[i]))
-        {
-            return false;
-        }
-    }
+    // Step 5: Character at position 12 must be '-'
+    if (rollNumber[12] != '-')
+        return false;
+
+    // Step 6: Last two characters must be digits
+    if (!isdigit(rollNumber[13]) || !isdigit(rollNumber[14]))
+        return false;
+
+    // Step 7: Last two digits must be between 01 and 50
+    int num = stoi(rollNumber.substr(13, 2));
+    if (num < 1 || num > 50)
+        return false;
 
     return true;
 }
