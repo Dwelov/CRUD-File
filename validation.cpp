@@ -30,7 +30,7 @@ bool validateRollNumber(const string &rollNumber)
 
     // Step 7: Last two digits must be between 01 and 50
     int num = stoi(rollNumber.substr(13, 2));
-    if (num < 1 || num > 50)
+    if (num < 1 || num > 99)
         return false;
 
     return true;

@@ -19,7 +19,7 @@ void readFile(const string &filename)
 }
 
 void addStudents(const string &filename, const string &rollNumber, const string &newName,
-                 const vector<int> &newMarks, double newAverage)
+                 const vector<int> &newMarks, float newAverage)
 {
     ofstream file(filename, ios::app); // append mode
     if (!file)
