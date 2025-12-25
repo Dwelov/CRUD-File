@@ -34,6 +34,20 @@ bool validateRollNumber(const string &rollNumber)
             return false;
         }
     }
+    // step-5 - checking the 13th character is '-'
+    if (rollNumber[13] != '-')
+    {
+        return false;
+    }
 
-    
+    // step # 6 - checking last two characters are digits or not
+    for (int i = 13; i <= 15; i++)
+    {
+        if (!isdigit(rollNumber[i]))
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
