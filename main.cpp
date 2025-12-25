@@ -43,7 +43,6 @@ int main()
     cin >> average;
 
     addStudents(filename, rollNo, name, marksList, average);
-
-
+    
     return 0; 
 }
