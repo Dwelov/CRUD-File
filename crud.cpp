@@ -27,7 +27,8 @@ void addStudents(const string &filename, const string &rollNumber, const string 
         cerr << "Error: file not found." << endl;
         return;
     }
-    // Write the new record in CSV format file << rollNumber << "," << newName;
+    // Write the new record in CSV format 
+    file << rollNumber << "," << newName;
     for (int mark : newMarks)
     {
         file << "," << mark;
@@ -36,3 +37,6 @@ void addStudents(const string &filename, const string &rollNumber, const string 
     file.close();
     cout << "Student record added successfully!" << endl;
 }
+
+
+    
