@@ -5,5 +5,5 @@
 #include <string>
 using namespace std;
 // Function to read the existing file
-void readFile(const ifstream &filename);
+void readFile(const string &filename);
 #endif

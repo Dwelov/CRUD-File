@@ -2,9 +2,9 @@
 #include "crud.h"
 
 // Function to read the existing file
-void readFile(const ifstream &requirefile)
+void readFile(const string &filename)
 {
-    ifstream file("requirefile");
+    ifstream file(filename);
     if (!file)
     {
         cerr << "Error opening file for reading." << endl;

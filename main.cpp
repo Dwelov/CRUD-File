@@ -5,15 +5,9 @@ using namespace std;
 
 int main()
 {
-    string index;
-    cout << "Enter roll number to search: ";
-    cin >> index;
-    if(!validateRollNumber(index))
-    {
-        cout << "Invalid roll number format." << endl;
-        return 1;
-    }
-    search(index);
-   
+    string filename;
+    cout << "Enter the filename to read: ";
+    cin >> filename;
+    readFile(filename); 
     return 0;
 }
