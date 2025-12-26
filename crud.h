@@ -7,7 +7,11 @@
 #include <vector>
 #include <sstream>
 using namespace std;
-// Function to read the existing file
+
+     //function to create the file
+     void createFile( const string &filename);
+
+    // Function to read the existing file
      void readFile(const string &filename);
 
                //function to add students in the file

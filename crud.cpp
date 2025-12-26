@@ -1,6 +1,30 @@
 
 #include "crud.h"
 
+// function to create the file
+void createFile(const string &filename)
+{
+    string word = filename;
+    string extract;
+    size_t index = word.find('.');
+    if (index != string::npos)
+    {
+        extract = word.substr(index + 1);
+    }
+    else
+    {
+        cerr << "Invalid file extension please add the .csv file extension" << endl;
+        return;
+    }
+
+    if(extract != "csv"){
+        cerr << "Invalid file extension please add the .csv file extension" << endl;
+        return;
+    }
+    ofstream file(word);
+    cout << "File created successfully" << endl;
+}
+
 // Function to read the existing file
 void readFile(const string &filename)
 {
