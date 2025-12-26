@@ -65,6 +65,7 @@ void addStudents(const string &filename, const string &rollNumber, const string 
 
 void updateRecord(const string &filename, const string &rollNumber, const string &newName,
                   const vector<int> &newMarks, float newAverage)
+
 {
     // first declare the variables that are going to use in that block of the code
 
@@ -82,11 +83,6 @@ void updateRecord(const string &filename, const string &rollNumber, const string
     // read and update the line of the code
     while (getline(file, line))
     {
-        /*checking the first letter of the line starts with the rollno or not for
-         for this purpose i use the rfind function
-         it is
-                     str.rfind(index,pos)
-         it is part of the */
         if (line.rfind(rollNumber, 0) == 0)
         {
             cout << "line to update: " << line << endl;
@@ -125,8 +121,7 @@ void updateRecord(const string &filename, const string &rollNumber, const string
     cout << "Student data for the " << rollNumber << " Updated Successfully" << endl;
 }
 
-// function to delete the file
-void deleteRecord(const string &filename, const string rollNumber)
+void deleteRecord(const string &filename, const string &rollNumber)
 {
     vector<string> lines;
     ifstream file(filename);
@@ -135,25 +130,40 @@ void deleteRecord(const string &filename, const string rollNumber)
         cerr << "Error opening the file" << endl;
         return;
     }
+
     bool found = false;
     string line;
+
     while (getline(file, line))
     {
         if (line.rfind(rollNumber, 0) == 0)
         {
             found = true;
+            cout << "Line to delete: " << line << endl;
             continue;
         }
         lines.push_back(line);
     }
     file.close();
 
-    // now it is considered a best practice to write the data after changing it
+    if (!found)
+    {
+        cerr << "Error: roll number " << rollNumber << " not found in file." << endl;
+        return;
+    }
+
     ofstream updatedData(filename, ios::trunc);
+    if (!updatedData)
+    {
+        cerr << "Error opening file for writing" << endl;
+        return;
+    }
 
     for (const string &l : lines)
     {
-        cout << line << endl;
+        updatedData << l << endl;
     }
     updatedData.close();
+
+    cout << "Record for roll number " << rollNumber << " deleted successfully." << endl;
 }

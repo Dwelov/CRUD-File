@@ -14,12 +14,10 @@ int main()
     // Add some spacing at the start
     cout << endl
          << endl
-         << endl
-         << endl
          << endl;
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, 13); // magneta text
+    SetConsoleTextAttribute(hConsole, 10); 
 
     // variable declaration
     int choice;
@@ -86,19 +84,19 @@ int main()
             cin >> rollNumber;
 
             cout << string(20, ' ') << "Enter the new name: ";
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, name);
 
-            cout << string(20, ' ') << "Now enter the updated marks of the student in order (PF,ICT,ICP,CAG,FE,AP,G.P)"<<endl;
+            cout << string(20, ' ') << "Now enter the updated marks of the student in order (PF,ICT,ICP,CAG,FE,AP,G.P)" << endl;
             marksList.clear();
             for (int i = 1; i <= 7; i++)
-            {   
-                cout<<"Subject-"<<i<<": ";
+            {
+                cout << "Subject-" << i << ": ";
                 cin >> marks;
                 marksList.push_back(marks);
             }
             cout << "Enter the last thing the average marks" << endl;
-           
+
             cin >> average;
             validate = validateRollNumber(rollNumber);
             if (!validate)
@@ -110,6 +108,14 @@ int main()
                 updateRecord(filename, rollNumber, name, marksList, average);
             }
 
+            break;
+
+        case 4:
+            cout << string(20, ' ') << "Enter the name of the file for which you wanted to delete the data: " ;
+            cin >> filename;
+            cout << string(20, ' ') << "Enter the roll no of the student to delete its data: ";
+            cin >> rollNumber;
+            deleteRecord(filename, rollNumber);
             break;
 
         case 5:
