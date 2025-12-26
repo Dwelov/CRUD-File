@@ -15,9 +15,10 @@ int main()
     cout << endl << endl << endl << endl << endl;
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, 12); // red text
+    SetConsoleTextAttribute(hConsole, 13); // magneta text
 
     int choice; // variable declaration
+    string filename;
 
     do
     {
@@ -45,29 +46,25 @@ int main()
         switch (choice)
         {
         case 1:
-            cout << "Enter the name of the file you want to create\n"
-                 << "(--------but you can create only .csv files------ )\n";
-            // call createFile() here
-            break;
+            cout << string(20, ' ') << "Enter the name of the file you want to create\n"
+                 <<string(20, ' ')<< "(--------but you can create only .csv files------ )\n";
 
+            cin>>filename;
+            createFile(filename);
+            break;
+        
         case 2:
-            cout << "Reading file...\n";
-            // call readFile() here
+            cout << string(20, ' ') << "Reading the file" << endl;
+            cout << string(20, ' ') << "Enter the name of the file you want to read" << endl;
+            cin>>filename;
+            readFile(filename);
             break;
 
         case 3:
-            cout << "Updating file...\n";
-            // call updateFile() here
-            break;
-
-        case 4:
-            cout << "Deleting records...\n";
-            // call deleteFile() here
-            break;
 
         case 5:
-            cout << "Exiting program...\n";
-            break;
+        cout<<"You are terminating the program"<<endl;
+        break;
 
         default:
             cout << "Invalid choice! Please try again.\n";
