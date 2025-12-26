@@ -100,3 +100,36 @@ void updateRecord(const string &filename, const string &rollNumber, const string
 
     cout << "Student data for the " << rollNumber << " Updated Successfully" << endl;
 }
+
+// function to delete the file
+void deleteRecord(const string &filename, const string rollNumber)
+{
+    vector<string> lines;
+    ifstream file(filename);
+    if (!file)
+    {
+        cerr << "Error opening the file" << endl;
+        return;
+    }
+    bool found = false;
+    string line;
+    while (getline(file, line))
+    {
+        if (line.rfind(rollNumber, 0) == 0)
+        {
+            found = true;
+            continue;
+        }
+        lines.push_back(line);
+    }
+    file.close();
+
+    // now it is considered a best practice to write the data after changing it
+    ofstream updatedData(filename, ios::trunc);
+
+    for (const string &l : lines)
+    {
+        cout << line << endl;
+    }
+    updatedData.close();
+}

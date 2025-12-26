@@ -1,5 +1,6 @@
 #ifndef CRUD_CPP
 #define CRUD_CPP
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -18,7 +19,8 @@ using namespace std;
                   const vector<int> &newMarks, float newAverage);
 
       //function to delete the file
-     void delete(){}
+
+      void deleteRecord(const string &filename, const string rollNumber);
 
 
 
