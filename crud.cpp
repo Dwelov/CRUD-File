@@ -17,7 +17,8 @@ void createFile(const string &filename)
         return;
     }
 
-    if(extract != "csv"){
+    if (extract != "csv")
+    {
         cerr << "Invalid file extension please add the .csv file extension" << endl;
         return;
     }
@@ -101,7 +102,6 @@ void updateRecord(const string &filename, const string &rollNumber, const string
         }
         else
         {
-            cout << "Nothing to update " << endl;
             lines.push_back(line);
         }
     }

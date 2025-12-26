@@ -12,13 +12,22 @@ using namespace std;
 int main()
 {
     // Add some spacing at the start
-    cout << endl << endl << endl << endl << endl;
+    cout << endl
+         << endl
+         << endl
+         << endl
+         << endl;
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, 13); // magneta text
 
-    int choice; // variable declaration
-    string filename;
+    // variable declaration
+    int choice;
+    string filename, rollNumber, name;
+    vector<int> marksList;
+    int marks;
+    bool validate;
+    float average;
 
     do
     {
@@ -38,7 +47,7 @@ int main()
              << string(20, ' ') << "| 5- Exit the program          " << string(18, ' ') << "|" << endl
              << string(20, ' ') << string(50, '-') << endl;
 
-        // Input
+        // prompting the input from the user for which function he is going to perform
         cout << "\nEnter your choice: ";
         cin >> choice;
 
@@ -47,24 +56,65 @@ int main()
         {
         case 1:
             cout << string(20, ' ') << "Enter the name of the file you want to create\n"
-                 <<string(20, ' ')<< "(--------but you can create only .csv files------ )\n";
-
-            cin>>filename;
+                 << string(20, ' ') << "(--------but you can create only .csv files------ ): ";
+            cin >> filename;
             createFile(filename);
             break;
-        
+
         case 2:
             cout << string(20, ' ') << "Reading the file" << endl;
-            cout << string(20, ' ') << "Enter the name of the file you want to read" << endl;
-            cin>>filename;
+            cout << string(20, ' ') << "Enter the name of the file you want to read: ";
+            cin >> filename;
             readFile(filename);
             break;
 
         case 3:
+            cout << string(20, ' ') << "Updating the file" << endl
+                 << string(20, ' ') << "The data in tne file is organized in the way to keep the record of the students and their grades " << endl
+                 << string(20, ' ') << "To update the file you need to enter the followinng details" << endl
+                 << string(20, ' ') << "1- file name" << endl
+                 << string(20, ' ') << "2- roll no of the  format BSAI25011519-12 (the digits after - should be 1 to  99)" << endl
+                 << string(20, ' ') << "3- the name of the student" << endl
+                 << string(20, ' ') << "4-Marks the student Obtained in 7 subjects " << endl
+                 << string(20, ' ') << "5-Average of that marks" << endl
+                 << string(80, '=') << endl
+                 << "I hope that you have read the above statements so lets get started" << endl
+                 << "Enter the name of the file you have to update: ";
+            cin >> filename;
+
+            cout << string(20, ' ') << "Enter the new roll no: ";
+            cin >> rollNumber;
+
+            cout << string(20, ' ') << "Enter the new name: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            getline(cin, name);
+
+            cout << string(20, ' ') << "Now enter the updated marks of the student in order (PF,ICT,ICP,CAG,FE,AP,G.P)"<<endl;
+            marksList.clear();
+            for (int i = 1; i <= 7; i++)
+            {   
+                cout<<"Subject-"<<i<<": ";
+                cin >> marks;
+                marksList.push_back(marks);
+            }
+            cout << "Enter the last thing the average marks" << endl;
+           
+            cin >> average;
+            validate = validateRollNumber(rollNumber);
+            if (!validate)
+            {
+                cerr << "Roll Number format is incorrect" << endl;
+            }
+            else
+            {
+                updateRecord(filename, rollNumber, name, marksList, average);
+            }
+
+            break;
 
         case 5:
-        cout<<"You are terminating the program"<<endl;
-        break;
+            cout << "You are terminating the program" << endl;
+            break;
 
         default:
             cout << "Invalid choice! Please try again.\n";
