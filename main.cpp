@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <windows.h>
 #include <limits>
 #include "crud.h"
 #include "search.h"
@@ -10,39 +11,23 @@ using namespace std;
 
 int main()
 {
-    string filename, rollNo, name;
-    vector<int> marksList;
-    float average;
+    cout << string(20, ' ');
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 12);
 
-    cout << "Enter the filename you want to update: ";
-    cin >> filename;
+    cout << string(20, ' ') << string(50, '=') << endl
+         << string(20, ' ') << " CRUD File Project " << endl
+         << string(20, ' ') << string(50, '=') << endl;
+    cout << endl;
 
-    cout << "Now Enter the roll number: ";
-    cin >> rollNo;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << string(20, ' ') << string(50, '-') << endl
+         << string(20, ' ') << string(23, '-') << "Menu" << string(23, '-') << endl
+         << string(20, ' ') << "| 1- Create a file |" << endl
+         << string(20, ' ') << "| 2- Read the file |" << endl
+         << string(20, ' ') << "| 3- Update the file |" << endl
+         << string(20, ' ') << "| 4- Delete the Records of File |" << endl
+         << string(20, ' ') << string(50, '-') << endl;
 
-    cout << "Now Enter the name of student: ";
-    getline(cin, name);
-    cout<<endl;
-
-    if (!validateRollNumber(rollNo))
-    {
-        cerr << "Roll no should be in the format BSAI25011519-(two digit number)" << endl;
-        return 1;
-    }
-
-    for (int i = 0; i < 7; i++)
-    {
-        int mark;
-        cout << "Enter mark " << i + 1 << ": ";
-        cin >> mark;
-        marksList.push_back(mark);
-    }
-
-    cout << "Now enter the average of the marks: ";
-    cin >> average;
-
-    addStudents(filename, rollNo, name, marksList, average);
     
-    return 0; 
+    return 0;
 }
