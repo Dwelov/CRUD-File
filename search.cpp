@@ -1,7 +1,12 @@
 #include "search.h"
 
-void search(const string& index) {
-    ifstream file("dataset.csv");
+void search(const string &filename,const string& index) {
+    ifstream file(filename);
+    if(!file){
+        cerr<<"Error opening the file"<<endl;
+        return;
+    }
+    
     string line;
     bool found = false;
 
@@ -18,3 +23,5 @@ void search(const string& index) {
 
     file.close();
 }
+
+

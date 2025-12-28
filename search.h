@@ -7,6 +7,6 @@
 using namespace std;
 
 // Function declaration
-void search(const string& index);
+void search(const string &filename, const string &index);
 
 #endif
