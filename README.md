@@ -1,8 +1,5 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
+
   <title>CSV CRUD Project</title>
-</head>
 <body>
   <h1>CSV CRUD Project</h1>
 
@@ -43,4 +40,4 @@
     Follow the on-screen menu to perform CRUD operations, validate roll numbers, add students, or search data.
   </p>
 </body>
-</html>
+
