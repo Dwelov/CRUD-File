@@ -1,5 +1,4 @@
 
-  <title>CSV CRUD Project</title>
 <body>
   <h1>CSV CRUD Project</h1>
 
@@ -25,17 +24,17 @@
   <ol>
     <li>
       Clone the repository:
-      <pre><code>git clone https://github.com/yourusername/csv-crud.git</code></pre>
+      <pre><code>git clone https://github.com/Dwelov/CRUD-File</code></pre>
     </li>
     <li>
       Compile the program:
-      <pre><code>g++ main.cpp -o crud</code></pre>
+      <pre><code>g++ main.cpp search.cpp validation.cpp crud.cpp -o main.exe</code></pre>
     </li>
   </ol>
 
   <h2>Usage</h2>
   <p>Run the program:</p>
-  <pre><code>./crud</code></pre>
+  <pre><code>./main.exe</code></pre>
   <p>
     Follow the on-screen menu to perform CRUD operations, validate roll numbers, add students, or search data.
   </p>
